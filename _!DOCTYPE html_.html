@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>??!</title>
+<link rel="stylesheet" href="body.css">
+    <style>
+        @import url("body.css");
+    </style>
+</head>
+<body>
+    <audio id="tv girl" src="tv girl.mp3" loop></audio>
+    <h1 style="text-align: center;"> Aperte em qualquer lugar da tela por favor :3</h1>
+
+    <div class="container-fotos">
+    
+    <div class="M">
+        <img src="maria.png" alt="Maria">
+    </div>
+
+    <div class="L">
+        <img src="leo2.png" alt="leo"> </div>
+
+</div>
+    
+    <h1 style="text-align: center;">Do you want to know a secret?</h1>
+    <h2 style="text-align: center;" >But you need to promise not to tell</h2>
+    <h2 style="text-align: center;">Can i trust in you?</h2>
+    <nav class="botas">
+    <ul>
+        <li><a href="Sure">Sure</a></li>
+        <li><a href="Sure">Yes</a></li>
+
+    </ul>
+</nav>
+    <div id="janela-labirinto" class="modal-labirinto">
+    <div class="conteudo-labirinto">
+        <h2>Chegue ao fim sem tocar nas paredes!</h2>
+        
+        <div class="area-jogo">
+            <div id="inicio" class="zona-start">INÍCIO</div>
+            
+            <div class="parede p1"></div>
+            <div class="parede p2"></div>
+            <div class="parede p3"></div>
+            
+            <div id="fim" class="zona-end">FIM</div>
+        </div>
+        
+        <p id="status-jogo">Passe o mouse no INÍCIO para começar!</p>
+    </div>
+</div>
+<script>
+    // Quando o usuário clicar em qualquer parte do site, a música toca
+    document.addEventListener('click', function() {
+        var audio = document.getElementById('tv girl');
+        audio.play();
+    }, { once: true }); // O 'once: true' garante que isso só aconteça no primeiro clique
+</script>
+<script> 
+    // Selecionando os elementos do labirinto
+const modal = document.getElementById('janela-labirinto');
+const inicio = document.getElementById('inicio');
+const fim = document.getElementById('fim');
+const paredes = document.querySelectorAll('.parede');
+const statusJogo = document.getElementById('status-jogo');
+
+let jogoAtivo = false;
+
+// 1. Fazer os botões "Sure" e "Yes" abrirem o labirinto ao serem clicados
+document.querySelectorAll('.botas a').forEach(botao => {
+    botao.addEventListener('click', function(evento) {
+        evento.preventDefault(); // Impede a página de recarregar ou mudar de link
+        modal.style.display = 'flex'; // Mostra o labirinto
+        resetarJogo();
+    });
+});
+
+// 2. Ativar o jogo quando o mouse entra na área de INÍCIO
+inicio.addEventListener('mouseenter', () => {
+    jogoAtivo = true;
+    statusJogo.innerText = "Jogo iniciado! Vá até o FIM!";
+    statusJogo.style.color = "#28a745";
+});
+
+// 3. Detectar se o mouse encostou em qualquer parede
+paredes.forEach(parede => {
+    parede.addEventListener('mouseenter', () => {
+        if (jogoAtivo) {
+            jogoAtivo = false;
+            statusJogo.innerText = "Você bateu na parede! Volte para o INÍCIO.";
+            statusJogo.style.color = "#dc3545"; // Vermelho
+            
+            // Efeito visual rápido de erro piscando a tela do labirinto
+            document.querySelector('.area-jogo').style.borderColor = '#dc3545';
+            setTimeout(() => {
+                document.querySelector('.area-jogo').style.borderColor = 'rgb(56, 45, 211)';
+            }, 300);
+        }
+    });
+});
+
+// 4. Detectar se o usuário chegou ao FIM com o jogo ativo
+fim.addEventListener('mouseenter', () => {
+    if (jogoAtivo) {
+        jogoAtivo = false;
+        
+        // Mensagem rápida de parabéns (opcional)
+        alert("Você conseguiu passar pelo labirinto! Redirecionando...");
+        
+        // Altere o link abaixo para a página que você quer abrir:
+        // Pode ser um arquivo local (ex: "segredo.html") ou um site (ex: "https://google.com")
+        window.location.href = "Sure.html"; 
+    }
+});
+
+// Função para resetar as mensagens do jogo
+function resetarJogo() {
+    jogoAtivo = false;
+    statusJogo.innerText = "Passe o mouse no INÍCIO para começar!";
+    statusJogo.style.color = "white";
+}
+</script>
+
+
+</body>
+</html>

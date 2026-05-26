@@ -1,0 +1,281 @@
+body{
+    background-color: black;
+    justify-content: center;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+
+h1{
+    color: rgb(56, 45, 211);
+}
+h2{
+    color: rgb(56, 45, 211);
+}
+
+p{
+    color: white;
+}
+/* Novo bloco para alinhar as duas divs no centro da tela */
+.container-fotos {
+    display: flex;
+    justify-content: center;  /* Centraliza as duas divs horizontalmente */
+    gap: 20px;                /* Define o espaço de separação entre as duas imagens */
+    margin-top: 67px;         /* Mantém o espaçamento do topo que você já tinha */
+    width: 100%;
+}
+
+.M {
+    border-radius: 5px;
+    border-color: rgb(56, 45, 211);
+    border-style: solid;
+    width: max-content;
+    
+    /* Ajustamos o max-width para 40% para que as duas caibam na mesma linha sem quebrar */
+    max-width: 40%; 
+    height: auto;
+    
+    /* Removemos o 'margin: 0 auto' antigo pois quem centraliza agora é o Flexbox do container */
+    padding: 10px 20px;
+    background: rgb(1, 2, 2);
+    margin-right: 40px;
+}
+
+/* Garante que as imagens dentro da div não ultrapassem o limite da borda */
+.L img {
+     border-radius: 5px;
+    border-color: rgb(56, 45, 211);
+    border-style: solid;
+    width: max-content;
+    max-width: 100%;
+    height: auto;
+    display: block;
+     max-width: 57%; 
+    height: auto;
+    
+    /* Removemos o 'margin: 0 auto' antigo pois quem centraliza agora é o Flexbox do container */
+    padding: 10px 20px;
+    background: rgb(1, 2, 2);
+    
+}
+.botas ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 30px auto 0 auto;
+    display: flex;
+    justify-content: center; /* Centraliza o menu na tela */
+    gap: 15px;              /* Espaçamento entre um bloco e outro */
+}
+
+/* Estilização de cada bloco do menu */
+.botas a {
+    display: inline-block;
+    color: white;
+    text-decoration: none; /* Remove o sublinhado padrão de link */
+    
+    /* O visual rosa que você tinha criado */
+    border: 2px solid rgb(56, 45, 211);
+    border-radius: 5px;
+    background-color: rgb(1, 2, 2);
+    
+    /* Espaçamento interno para as letras não colarem na borda */
+    padding: 10px 20px;
+    
+    /* Faz o bloco acompanhar o tamanho do texto automaticamente */
+    width: max-content;
+    
+    /* Transição suave para o efeito de passar o mouse */
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Efeito visual lindo: muda de cor quando o usuário passa o mouse por cima */
+.botas a:hover {
+    background-color: rgb(56, 45, 211);
+    color: rgb(0, 0, 0);
+}
+/* Janela de fundo que cobre a tela inteira */
+.modal-labirinto {
+    display: none; /* Começa escondido */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Fundo preto semi-transparente */
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Caixa central onde fica o jogo */
+.conteudo-labirinto {
+    background-color: rgb(1, 2, 2);
+    border: 3px solid rgb(56, 45, 211);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+/* O mapa do labirinto */
+.area-jogo {
+    position: relative;
+    width: 400px;
+    height: 300px;
+    background-color: #111;
+    border: 2px solid rgb(56, 45, 211);
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+/* Estilo das zonas de Início e Fim */
+.zona-start, .zona-end {
+    position: absolute;
+    width: 60px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.zona-start {
+    background-color: #28a745; /* Verde */
+    top: 10px;
+    left: 10px;
+}
+
+.zona-end {
+    background-color: #ffc107; /* Amarelo/Ouro */
+    bottom: 10px;
+    right: 10px;
+    color: black;
+}
+
+/* Estilo geral das paredes */
+.parede {
+    position: absolute;
+    background-color: rgb(56, 45, 211); /* Mesmo azul do seu tema */
+}
+
+/* Posição de cada parede para criar o caminho (Formato em 'S') */
+.parede.p1 {
+    top: 0;
+    left: 100px;
+    width: 30px;
+    height: 220px;
+}
+
+.parede.p2 {
+    bottom: 0;
+    left: 200px;
+    width: 30px;
+    height: 220px;
+}
+
+.parede.p3 {
+    top: 0;
+    left: 300px;
+    width: 30px;
+    height: 220px;
+}
+/* Fundo escuro que cobre a tela */
+.modal-texto-fundo {
+    display: none; /* Começa escondido */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+/* A caixinha central do texto */
+.caixa-texto {
+    background-color: rgb(1, 2, 2);
+    border: 2px solid rgb(56, 45, 211); /* O mesmo azul das suas outras páginas */
+    border-radius: 8px;
+    padding: 30px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    color: white;
+}
+
+.caixa-texto p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Botão de fechar */
+#fechar-texto {
+    background-color: transparent;
+    color: white;
+    border: 1px solid rgb(56, 45, 211);
+    padding: 8px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+#fechar-texto:hover {
+    background-color: rgb(56, 45, 211);
+}
+/* Container do Menu de Jogos */
+.menu-jogos {
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(56, 45, 211, 0.3); /* Uma linha sutil separando a carta do menu */
+}
+
+.menu-jogos h3 {
+    font-family: 'Segoe UI', sans-serif;
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Alinhamento dos botões (um embaixo do outro ou lado a lado se couber) */
+.botoes-jogos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 300px;
+    margin: 0 auto; /* Centraliza o bloco de botões */
+}
+
+/* Estilo de cada botão de jogo */
+.btn-jogo {
+    background-color: transparent;
+    color: white;
+    border: 2px solid rgb(56, 45, 211);
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+/* Efeito de hover (passar o mouse) */
+.btn-jogo:hover {
+    background-color: rgb(56, 45, 211);
+    box-shadow: 0 0 15px rgba(56, 45, 211, 0.6);
+    transform: translateY(-2px); /* Dá um leve saltinho para cima */
+}
+
+/* Estilo do emoji */
+.btn-jogo .icone {
+    font-size: 18px;
+}

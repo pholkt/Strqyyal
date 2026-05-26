@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>??!</title>
+ 
+  </head>
+ <style> 
+    @import url("body.css");
+  </style>
+  <body>
+     <audio id="secret" src="secret.mp3" loop></audio>
+<div class="secret">
+    <h1 style="text-align: center;"> Clique em qualquer lugar da tela :3</h1>
+    <h2 style="text-align: center;">Coloca em tela cheia pls, se vc fechar o texto pode so recarregar a pagina que ele aparece com o click okkk??</h2>
+</div>
+<div class="segredo"></div>
+
+    <div id="janela-texto" class="modal-texto-fundo">
+        <div class="caixa-texto">
+            <h2>Cabou o mistério</h2>
+            
+       <p>De um tempo pra cá, percebi que o que sinto por você não é algo comum. To ligado no quão clichê isso possa soar, mas não encontrei outro jeito de me expressar sem o medo de ficar um climão entre nós. É óbvio que, se não for um sentimento mútuo, as coisas podem ficar um estranhas por um tempo, mas sei que teriamos a maturidade necessária para que em algum momento voltassemos a ser o que somos hoje.</p>
+
+<p>Sem muita enrolação, eu sempre achei que eu estivesse em um momento de não querer se relacionar a sério com ninguém. Isso até aquele dia memorável em que, pelo seu convite, fomos ao Ginásio Municipal de Garibaldi pela primeira vez. Lembro de quando sentamos na grama para descansar, o sol refletia nos seus cabelos e nos seus olhos encantadores, me deixando tão hipnotizado que desviar o olhar soava quase como um crime para mim. Sabia que se algum dia eu morresse com aquela visão, seria o garoto mais feliz do mundo. Aquele momento me marcou tanto que percebi que o que eu sentia ultrapassava qualquer fronteira da amizade: eu queria e quero você. Percebi o quanto te amava e que, por mais que já tivesse citado te amar, nunca consegui citar o amor romântico que sinto por você</p>
+
+<p>Mas de repente me vi em uma encruzilhada de sentimentos e sensações, queria contar tudo a você, mas tinha um medo enorme de perder a nossa amizade (embora acredite que temos maturidade para continuar amigos caso você não sinta o mesmo). Essa dúvida angustiante me fez quase crer que a melhor opção fosse manter o que temos intacto, mas eu não conseguiria viver com esse "e se" na mente. Isso foi uma das razões para tão de repente me abrir em relação a tudo.
+</p>
+
+<p>Confesso que me sinto leve após escrever isto. Tenho medo de não ser recíproco, claro, mas a vida é curta demais para não arriscar me declarar para a garota que mais me inspira todos os dias, sendo uma grande motivação para ser uma pessoa melhor. Eu te amo muito, Maria.</p>
+<p>Espero que, se também for da sua vontade, fiquemos juntos e que as coisas entre nós so melhorem :3</p>
+            
+            <button id="fechar-texto">Fechar</button>
+        </div>
+    </div>
+
+<script> 
+
+    // Pegando os elementos do HTML
+    const modalTexto = document.getElementById('janela-texto');
+    const btnFechar = document.getElementById('fechar-texto');
+
+    // Quando o usuário clicar em qualquer parte do site, toca a música E abre o texto
+    document.addEventListener('click', function() {
+        var audio = document.getElementById('secret');
+        audio.play();
+        
+        // Abre a janelinha de texto
+        modalTexto.style.display = 'flex';
+    }, { once: true }); // O 'once: true' garante que isso só aconteça no primeiro clique
+
+    // Faz o botão "Fechar" esconder a janelinha para a pessoa ver o resto do site
+    btnFechar.addEventListener('click', function(evento) {
+        evento.stopPropagation(); // Impede conflito de cliques
+        modalTexto.style.display = 'none';
+    });
+</script>
+<script>
+    function iniciarJogo(numeroDoJogo) {
+    if (numeroDoJogo === 1) {
+        alert("Jogo da Velha!");
+        // Aqui no futuro você pode abrir o jogo da velha
+    } else if (numeroDoJogo === 2) {
+        alert("Jogo da Cobrinha!");
+        // Aqui no futuro você pode abrir o jogo da cobrinha
+    } else if (numeroDoJogo === 3) {
+        alert("Jogo da Memória!");
+        // Aqui no futuro você pode abrir o jogo da memória
+    }
+}
+</script>
+    </body>
+</html>
